@@ -1,0 +1,50 @@
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+//---------------------------
+int Max_Index(int M[])
+{
+    for(int i=0;i<4;i++)
+    {
+        for(int j=1;j<4;j++)
+            if(M[i]<M[j])
+        {
+            swap(M[i],M[j]);
+        }
+    }
+    return M[0];
+}
+//-------------------------
+int Min_Index(int M[])
+{
+  for(int i=0;i<4;i++)
+    {
+        for(int j=1;j<4;j++)
+            if(M[i]>M[j])
+        {
+            swap(M[i],M[j]);
+        }
+    }
+    return M[0];
+}
+
+int main()
+{
+    int salary[4]={4000,3000,1000,2000};
+    int maxi= Max_Index(salary);
+    int mini= Min_Index(salary);
+    int k=0; //mid salary
+    int m=0; //how many numbers are there in the average salary
+    for(int i=0;i<4;i++)
+    {
+        if(salary[i]!= maxi && salary[i]!=mini)
+        {
+            k=k+salary[i];
+            m++;
+        }
+    }
+    double average=k/m;
+    cout<<fixed<<setprecision(5)<<average;
+    return 0;
+}
